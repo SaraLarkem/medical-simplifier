@@ -296,7 +296,7 @@ def relaxed_prf_counts(doc, detected):
 _MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
 REGEX_PATTERNS = [
     ("EMAIL_ADDRESS", r"[\w.+-]+@[\w-]+\.[\w.-]+"),
-    ("PPS_NUMBER", r"\b\d{7}[A-W][A-W]?\b"),
+    ("PPS_NUMBER", r"\b\d{7}[A-Za-z]{1,2}\b"),
     ("EIRCODE", r"\b(?:[ACDEFHKNPRTVWXY]\d{2}|D6W)\s?[0-9ACDEFHKNPRTVWXY]{4}\b"),
     ("PHONE_NUMBER", r"\+353\s?\d{2}\s?\d{3}\s?\d{4}|\b0\d{2}[\s-]?\d{3}[\s-]?\d{4}\b|\(0\d{1,2}\)\s?\d{7}"),
     ("DATE_TIME", rf"\b\d{{1,2}}/\d{{1,2}}/\d{{4}}\b|\b\d{{4}}-\d{{2}}-\d{{2}}\b|\b\d{{1,2}} (?:{_MONTHS}) \d{{4}}\b"),
