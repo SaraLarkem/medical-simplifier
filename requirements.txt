@@ -1,0 +1,6 @@
+pytesseract
+Pillow
+requests
+presidio-analyzer
+presidio-anonymizer
+spacy
