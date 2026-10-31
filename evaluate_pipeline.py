@@ -321,11 +321,35 @@ def presidio_detector(entities):
         return [(r.start, r.end, r.entity_type) for r in results]
     return detect
 
+def detect_hybrid(text):
+    """Combines Presidio NLP (names/addresses) with strict Regex (dates/IDs)."""
+    # 1. Run the precise regexes (preserves clinical dates, catches Irish IDs)
+    spans = detect_regex_ids(text)
+    
+    # 2. Run Presidio ONLY for natural language entities 
+    if "engine" not in _PRESIDIO:
+        from presidio_analyzer import AnalyzerEngine
+        _PRESIDIO["engine"] = AnalyzerEngine()
+        
+    # By omitting DATE_TIME here, we stop Presidio from destroying medical durations
+    results = _PRESIDIO["engine"].analyze(
+        text=text, 
+        entities=["PERSON", "LOCATION"], 
+        language="en"
+    )
+    
+    for r in results:
+        # Map Presidio's LOCATION to the evaluation script's ADDRESS type
+        entity_type = "ADDRESS" if r.entity_type == "LOCATION" else r.entity_type
+        spans.append((r.start, r.end, entity_type))
+        
+    return spans
 
 DETECTORS = {
     "regex_ids": detect_regex_ids,
     # exactly the configuration used in mvp_test.py:
     "mvp": presidio_detector(["PERSON", "DATE_TIME", "PHONE_NUMBER"]),
+    "hybrid": detect_hybrid,
 }
 
 

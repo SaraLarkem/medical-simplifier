@@ -11,7 +11,7 @@ import os
 import pytesseract
 from PIL import Image
 import requests
-from presidio_analyzer import AnalyzerEngine
+from presidio_analyzer import AnalyzerEngine, PatternRecognizer, Pattern
 from presidio_anonymizer import AnonymizerEngine
 from dotenv import load_dotenv
 
@@ -24,8 +24,20 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 API_KEY = os.getenv("GROQ_API_KEY")
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
-# Initialize local PII redaction engines (Microsoft Presidio)
+# --- CUSTOM IRISH DATA RECOGNIZERS ---
+# 1. PPS Number: 7 numbers followed by 1 or 2 letters (e.g., 1234567A or 1234567AB)
+pps_pattern = Pattern(name="pps_regex", regex=r"\b\d{7}[A-Za-z]{1,2}\b", score=0.9)
+pps_recognizer = PatternRecognizer(supported_entity="PPS_NUMBER", patterns=[pps_pattern])
+
+# 2. Eircode: 3 characters, optional space, 4 characters (e.g., A65 F4E2)
+eircode_pattern = Pattern(name="eircode_regex", regex=r"\b[A-Za-z]\d{2}\s?[A-Za-z0-9]{4}\b", score=0.9)
+eircode_recognizer = PatternRecognizer(supported_entity="EIRCODE", patterns=[eircode_pattern])
+
+# Initialize local PII redaction engines and inject custom rules
 analyzer = AnalyzerEngine()
+analyzer.registry.add_recognizer(pps_recognizer)
+analyzer.registry.add_recognizer(eircode_recognizer)
+
 anonymizer = AnonymizerEngine()
 
 image_path = "sample_report.png"
@@ -53,7 +65,7 @@ print("\n--- EXECUTING LOCAL PII REDACTION (DATA MINIMIZATION) ---")
 # Scan text locally for sensitive entities before any network transmission
 analysis_results = analyzer.analyze(
     text=extracted_text, 
-    entities=["PERSON", "DATE_TIME", "PHONE_NUMBER"], 
+    entities=["PERSON", "DATE_TIME", "PHONE_NUMBER", "PPS_NUMBER", "EIRCODE", "LOCATION"], 
     language='en'
 )
 
