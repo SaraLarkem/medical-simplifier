@@ -1,6 +1,17 @@
+# Core pipeline
 pytesseract
 Pillow
 requests
+python-dotenv
 presidio-analyzer
 presidio-anonymizer
 spacy
+# After installing, download the model Presidio needs:
+#   python -m spacy download en_core_web_lg
+
+# OCR pre-processing + synthetic data generation
+numpy
+opencv-python-headless
+
+# Testing
+pytest
