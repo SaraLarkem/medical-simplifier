@@ -13,5 +13,13 @@ spacy
 numpy
 opencv-python-headless
 
+# Evaluation
+# Optional: faster Levenshtein for CER/WER (pure-Python fallback is used if missing)
+rapidfuzz
+
+# Analysis notebook
+pandas
+matplotlib
+
 # Testing
 pytest

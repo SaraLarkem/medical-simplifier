@@ -148,7 +148,7 @@ def otsu(g):
 
 
 PREPROCESS = {
-    "baseline": lambda g: upscale(g),                                  # what mvp_test.py does
+    "baseline": lambda g: upscale(g),                                  # what mvp_pipeline.py does
     "adaptive": lambda g: adaptive(upscale(g)),
     "bgnorm_otsu": lambda g: otsu(bg_normalise(upscale(g))),
     "deskew_adaptive": lambda g: adaptive(upscale(deskew(g))),
@@ -347,7 +347,7 @@ def detect_hybrid(text):
 
 DETECTORS = {
     "regex_ids": detect_regex_ids,
-    # exactly the configuration used in mvp_test.py:
+    # exactly the configuration used in mvp_pipeline.py:
     "mvp": presidio_detector(["PERSON", "DATE_TIME", "PHONE_NUMBER"]),
     "hybrid": detect_hybrid,
 }
