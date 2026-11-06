@@ -312,42 +312,43 @@ def detect_regex_ids(text):
 _PRESIDIO = {}
 
 
+def _get_analyzer():
+    """Shared Presidio engine, created on first use (heavy import, optional dependency)."""
+    if "engine" not in _PRESIDIO:
+        from presidio_analyzer import AnalyzerEngine
+        _PRESIDIO["engine"] = AnalyzerEngine()
+    return _PRESIDIO["engine"]
+
+
 def presidio_detector(entities):
     def detect(text):
-        if "engine" not in _PRESIDIO:
-            from presidio_analyzer import AnalyzerEngine  # imported lazily: heavy, optional
-            _PRESIDIO["engine"] = AnalyzerEngine()
-        results = _PRESIDIO["engine"].analyze(text=text, entities=entities, language="en")
+        results = _get_analyzer().analyze(text=text, entities=entities, language="en")
         return [(r.start, r.end, r.entity_type) for r in results]
     return detect
+
 
 def detect_hybrid(text):
     """Combines Presidio NLP (names/addresses) with strict Regex (dates/IDs)."""
     # 1. Run the precise regexes (preserves clinical dates, catches Irish IDs)
     spans = detect_regex_ids(text)
-    
-    # 2. Run Presidio ONLY for natural language entities 
-    if "engine" not in _PRESIDIO:
-        from presidio_analyzer import AnalyzerEngine
-        _PRESIDIO["engine"] = AnalyzerEngine()
-        
+
+    # 2. Run Presidio ONLY for natural language entities.
     # By omitting DATE_TIME here, we stop Presidio from destroying medical durations
-    results = _PRESIDIO["engine"].analyze(
-        text=text, 
-        entities=["PERSON", "LOCATION"], 
-        language="en"
-    )
-    
+    results = _get_analyzer().analyze(text=text, entities=["PERSON", "LOCATION"], language="en")
+
     for r in results:
         # Map Presidio's LOCATION to the evaluation script's ADDRESS type
         entity_type = "ADDRESS" if r.entity_type == "LOCATION" else r.entity_type
         spans.append((r.start, r.end, entity_type))
-        
+
     return spans
+
 
 DETECTORS = {
     "regex_ids": detect_regex_ids,
-    # exactly the configuration used in mvp_pipeline.py:
+    # Original MVP baseline: default Presidio with PERSON, DATE_TIME, PHONE_NUMBER only.
+    # mvp_pipeline.py has since added PPS_NUMBER, EIRCODE and LOCATION recognizers, so this
+    # no longer matches it exactly; kept unchanged so earlier results stay reproducible.
     "mvp": presidio_detector(["PERSON", "DATE_TIME", "PHONE_NUMBER"]),
     "hybrid": detect_hybrid,
 }
@@ -425,11 +426,10 @@ def cmd_ocr(args):
 # --------------------------------------------------------------------------- #
 def cmd_redact(args):
     docs = load_docs(args.data, args.limit)
-    texts = {}
     if args.source == "ocr":
         ensure_ocr(docs, args.data, [args.variant], [args.ocr_config], args.psm, args.results, args.workers)
-        for d in docs:
-            texts[d["id"]] = cache_path(args.results, args.psm, args.ocr_config, d["id"], args.variant).read_text(encoding="utf-8")
+        texts = {d["id"]: cache_path(args.results, args.psm, args.ocr_config, d["id"], args.variant).read_text(encoding="utf-8")
+                 for d in docs}
         label = f"OCR output ({args.ocr_config}, {args.variant} images)"
     else:
         texts = {d["id"]: d["text"] for d in docs}
