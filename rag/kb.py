@@ -32,6 +32,7 @@ class Entry:
     category: str = "health_topic"
     ambiguous: bool = False
     origin: str = "medlineplus"     # which part of the KB: "medlineplus" | "curated"
+    verified: bool = True           # curated rows: checked against their source by hand
 
 
 @dataclass
@@ -126,6 +127,7 @@ def _read_csv(path):
                 category=r["category"],
                 ambiguous=r["ambiguous"].strip().lower() == "true",
                 origin="curated",
+                verified=r["verified"].strip().lower() == "true",
             ))
     return out
 

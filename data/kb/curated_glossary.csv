@@ -1,38 +1,38 @@
 term,aliases,category,definition,source,url,ambiguous,verified
 OD,o.d.,abbreviation,"On UK and Irish prescriptions, OD usually means once a day. In eye care it can mean the right eye, and it is sometimes used for overdose, so check with your pharmacist what it means here.",BNF Latin abbreviations; ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
-OM,o.m.|mane,abbreviation,Once a day in the morning.,BNF Latin abbreviations,,false,false
-ON,o.n.|nocte,abbreviation,Once a day at night.,BNF Latin abbreviations,,false,false
-BD,BID|b.d.|b.i.d.,abbreviation,Twice a day.,BNF Latin abbreviations,,false,false
-TDS,TID|t.d.s.|t.i.d.,abbreviation,Three times a day.,BNF Latin abbreviations,,false,false
-QDS,QID|q.d.s.|q.i.d.,abbreviation,Four times a day.,BNF Latin abbreviations,,false,false
+OM,o.m.|mane,abbreviation,Once a day in the morning.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+ON,o.n.|nocte,abbreviation,Once a day at night.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+BD,BID|b.d.|b.i.d.,abbreviation,Twice a day.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+TDS,TID|t.d.s.|t.i.d.,abbreviation,Three times a day.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+QDS,QID|q.d.s.|q.i.d.,abbreviation,Four times a day.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
 QD,q.d.,abbreviation,"Meant to say once a day, but it is easily misread as four times a day (QID), so it is on the list of abbreviations not to use.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
 QOD,q.o.d.,abbreviation,"Meant to say every other day, but it is easily misread as once a day or four times a day.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
-PRN,p.r.n.,abbreviation,"Only when needed, rather than at fixed times.",BNF Latin abbreviations,,false,false
-STAT,stat,abbreviation,"Straight away, as a single dose.",BNF Latin abbreviations,,false,false
-AC,a.c.,abbreviation,Before food.,BNF Latin abbreviations,,false,false
-PC,p.c.,abbreviation,After food.,BNF Latin abbreviations,,false,false
+PRN,p.r.n.,abbreviation,"Only when needed, rather than at fixed times.",BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+STAT,stat,abbreviation,"Straight away, as a single dose.",BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+AC,a.c.,abbreviation,Before food.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+PC,p.c.,abbreviation,After food.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
 CC,c.c.,abbreviation,"On a prescription it can mean with food, but cc also means cubic centimetres (the same as millilitres), so it is easily confused.",BNF Latin abbreviations; ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
 HS,h.s.,abbreviation,"Usually means at bedtime, but it can also mean half-strength, so it is on the list of abbreviations not to use.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
-MDU,m.d.u.,abbreviation,Use as directed by your doctor or pharmacist.,BNF Latin abbreviations,,false,false
-Q4H,q4h,abbreviation,Every 4 hours.,BNF Latin abbreviations,,false,false
-Q6H,q6h,abbreviation,Every 6 hours.,BNF Latin abbreviations,,false,false
-Q8H,q8h,abbreviation,Every 8 hours.,BNF Latin abbreviations,,false,false
-Q12H,q12h,abbreviation,Every 12 hours.,BNF Latin abbreviations,,false,false
-PO,p.o.,abbreviation,"By mouth, swallowed.",BNF Latin abbreviations,,false,false
-SL,s.l.,abbreviation,Placed under the tongue to dissolve.,BNF Latin abbreviations,,false,false
-PR,p.r.,abbreviation,"As a route for medicine it means given into the back passage (rectum). In other notes PR can mean pulse rate, so check the context.",BNF Latin abbreviations,,true,false
-PV,p.v.,abbreviation,Given into the vagina.,BNF Latin abbreviations,,false,false
-IM,i.m.,abbreviation,Given as an injection into a muscle.,BNF Latin abbreviations,,false,false
-IV,i.v.,abbreviation,Given directly into a vein through a needle or drip.,BNF Latin abbreviations,,false,false
+MDU,m.d.u.,abbreviation,Use as directed by your doctor or pharmacist.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+Q4H,q4h,abbreviation,Every 4 hours.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+Q6H,q6h,abbreviation,Every 6 hours.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+Q8H,q8h,abbreviation,Every 8 hours.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+Q12H,q12h,abbreviation,Every 12 hours.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+PO,p.o.,abbreviation,"By mouth, swallowed.",BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+SL,s.l.,abbreviation,Placed under the tongue to dissolve.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+PR,p.r.,abbreviation,"As a route for medicine it means given into the back passage (rectum). In other notes PR can mean pulse rate, so check the context.",BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,true,false
+PV,p.v.,abbreviation,Given into the vagina.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+IM,i.m.,abbreviation,Given as an injection into a muscle.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+IV,i.v.,abbreviation,Given directly into a vein through a needle or drip.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
 SC,s.c.|SQ|s.q.,abbreviation,"Given as an injection just under the skin. SC can be misread as SL (under the tongue), so it is on the list of abbreviations not to use.",BNF Latin abbreviations; ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
 SUBCUT,subcut,abbreviation,Given as an injection just under the skin.,ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,false,false
-INH,inh,abbreviation,Breathed in through an inhaler.,BNF Latin abbreviations,,false,false
-NEB,neb,abbreviation,Breathed in as a fine mist from a nebuliser machine.,BNF Latin abbreviations,,false,false
-NBM,NPO,abbreviation,"Nothing to eat or drink, usually before a test or operation.",BNF Latin abbreviations,,false,false
+INH,inh,abbreviation,Breathed in through an inhaler.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+NEB,neb,abbreviation,Breathed in as a fine mist from a nebuliser machine.,BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
+NBM,NPO,abbreviation,"Nothing to eat or drink, usually before a test or operation.",BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
 IU,i.u.,abbreviation,"International units, a way of measuring some medicines. It can be misread as IV or as the number 10, so it is on the list of abbreviations not to use.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
-MCG,mcg,abbreviation,"Micrograms, a very small unit of weight (one thousandth of a milligram).",BNF Latin abbreviations,,false,false
+MCG,mcg,abbreviation,"Micrograms, a very small unit of weight (one thousandth of a milligram).",BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
 D/C,d/c,abbreviation,"Can mean discharge (leaving hospital) or discontinue (stop a medicine), so check which is meant.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
-OTC,,abbreviation,"Over the counter: a medicine you can buy without a prescription.",BNF Latin abbreviations,,false,false
+OTC,,abbreviation,"Over the counter: a medicine you can buy without a prescription.",BNF Latin abbreviations,https://bnf.nice.org.uk/about/abbreviations-and-symbols/,false,false
 Full blood count,FBC|CBC|Complete blood count,lab_test,"A common blood test that counts the different types of cells in your blood: red cells, white cells and platelets.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/complete-blood-count-cbc/,false,false
 Haemoglobin,Hemoglobin|Hb|Hgb,lab_test,"Measures haemoglobin, the protein in red blood cells that carries oxygen around your body. A low level can be a sign of anaemia.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/hemoglobin-test/,false,false
 White cell count,WCC|WBC|White blood cell count|White blood count,lab_test,"Counts the white blood cells, which help your body fight infection.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/white-blood-count-wbc/,false,false
