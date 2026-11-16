@@ -1,5 +1,9 @@
 .env
-data/
+# Generated data is ignored, except the hand-curated glossary
+data/*
+!data/kb/
+data/kb/*
+!data/kb/curated_glossary.csv
 results/
 __pycache__/
 *.pyc

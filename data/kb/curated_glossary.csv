@@ -1,0 +1,99 @@
+term,aliases,category,definition,source,url,ambiguous,verified
+OD,o.d.,abbreviation,"On UK and Irish prescriptions, OD usually means once a day. In eye care it can mean the right eye, and it is sometimes used for overdose, so check with your pharmacist what it means here.",BNF Latin abbreviations; ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
+OM,o.m.|mane,abbreviation,Once a day in the morning.,BNF Latin abbreviations,,false,false
+ON,o.n.|nocte,abbreviation,Once a day at night.,BNF Latin abbreviations,,false,false
+BD,BID|b.d.|b.i.d.,abbreviation,Twice a day.,BNF Latin abbreviations,,false,false
+TDS,TID|t.d.s.|t.i.d.,abbreviation,Three times a day.,BNF Latin abbreviations,,false,false
+QDS,QID|q.d.s.|q.i.d.,abbreviation,Four times a day.,BNF Latin abbreviations,,false,false
+QD,q.d.,abbreviation,"Meant to say once a day, but it is easily misread as four times a day (QID), so it is on the list of abbreviations not to use.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
+QOD,q.o.d.,abbreviation,"Meant to say every other day, but it is easily misread as once a day or four times a day.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
+PRN,p.r.n.,abbreviation,"Only when needed, rather than at fixed times.",BNF Latin abbreviations,,false,false
+STAT,stat,abbreviation,"Straight away, as a single dose.",BNF Latin abbreviations,,false,false
+AC,a.c.,abbreviation,Before food.,BNF Latin abbreviations,,false,false
+PC,p.c.,abbreviation,After food.,BNF Latin abbreviations,,false,false
+CC,c.c.,abbreviation,"On a prescription it can mean with food, but cc also means cubic centimetres (the same as millilitres), so it is easily confused.",BNF Latin abbreviations; ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
+HS,h.s.,abbreviation,"Usually means at bedtime, but it can also mean half-strength, so it is on the list of abbreviations not to use.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
+MDU,m.d.u.,abbreviation,Use as directed by your doctor or pharmacist.,BNF Latin abbreviations,,false,false
+Q4H,q4h,abbreviation,Every 4 hours.,BNF Latin abbreviations,,false,false
+Q6H,q6h,abbreviation,Every 6 hours.,BNF Latin abbreviations,,false,false
+Q8H,q8h,abbreviation,Every 8 hours.,BNF Latin abbreviations,,false,false
+Q12H,q12h,abbreviation,Every 12 hours.,BNF Latin abbreviations,,false,false
+PO,p.o.,abbreviation,"By mouth, swallowed.",BNF Latin abbreviations,,false,false
+SL,s.l.,abbreviation,Placed under the tongue to dissolve.,BNF Latin abbreviations,,false,false
+PR,p.r.,abbreviation,"As a route for medicine it means given into the back passage (rectum). In other notes PR can mean pulse rate, so check the context.",BNF Latin abbreviations,,true,false
+PV,p.v.,abbreviation,Given into the vagina.,BNF Latin abbreviations,,false,false
+IM,i.m.,abbreviation,Given as an injection into a muscle.,BNF Latin abbreviations,,false,false
+IV,i.v.,abbreviation,Given directly into a vein through a needle or drip.,BNF Latin abbreviations,,false,false
+SC,s.c.|SQ|s.q.,abbreviation,"Given as an injection just under the skin. SC can be misread as SL (under the tongue), so it is on the list of abbreviations not to use.",BNF Latin abbreviations; ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
+SUBCUT,subcut,abbreviation,Given as an injection just under the skin.,ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,false,false
+INH,inh,abbreviation,Breathed in through an inhaler.,BNF Latin abbreviations,,false,false
+NEB,neb,abbreviation,Breathed in as a fine mist from a nebuliser machine.,BNF Latin abbreviations,,false,false
+NBM,NPO,abbreviation,"Nothing to eat or drink, usually before a test or operation.",BNF Latin abbreviations,,false,false
+IU,i.u.,abbreviation,"International units, a way of measuring some medicines. It can be misread as IV or as the number 10, so it is on the list of abbreviations not to use.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
+MCG,mcg,abbreviation,"Micrograms, a very small unit of weight (one thousandth of a milligram).",BNF Latin abbreviations,,false,false
+D/C,d/c,abbreviation,"Can mean discharge (leaving hospital) or discontinue (stop a medicine), so check which is meant.",ISMP List of Error-Prone Abbreviations,https://www.ismp.org/recommendations/error-prone-abbreviations-list,true,false
+OTC,,abbreviation,"Over the counter: a medicine you can buy without a prescription.",BNF Latin abbreviations,,false,false
+Full blood count,FBC|CBC|Complete blood count,lab_test,"A common blood test that counts the different types of cells in your blood: red cells, white cells and platelets.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/complete-blood-count-cbc/,false,false
+Haemoglobin,Hemoglobin|Hb|Hgb,lab_test,"Measures haemoglobin, the protein in red blood cells that carries oxygen around your body. A low level can be a sign of anaemia.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/hemoglobin-test/,false,false
+White cell count,WCC|WBC|White blood cell count|White blood count,lab_test,"Counts the white blood cells, which help your body fight infection.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/white-blood-count-wbc/,false,false
+Platelets,Platelet count|PLT,lab_test,"Counts platelets, the small blood cells that help your blood clot and stop bleeding.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/platelet-tests/,false,false
+Red cell count,RBC|Red blood cell count|RCC,lab_test,"Counts the red blood cells, which carry oxygen from your lungs to the rest of your body.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/red-blood-cell-rbc-count/,false,false
+Haematocrit,Hematocrit|Hct,lab_test,Measures how much of your blood is made up of red blood cells.,MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/hematocrit-test/,false,false
+Mean cell volume,MCV|Mean corpuscular volume,lab_test,"Measures the average size of your red blood cells.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/red-blood-cell-indices/,false,false
+Neutrophils,Neutrophil count,lab_test,"Counts neutrophils, the most common type of white blood cell, which fight bacterial infections.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/blood-differential/,false,false
+Lymphocytes,Lymphocyte count,lab_test,"Counts lymphocytes, a type of white blood cell that helps fight viral infections.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/blood-differential/,false,false
+Urea and electrolytes,U&E|U&Es|U+E,lab_test,"A group of blood tests that check salts in your blood (such as sodium and potassium) and how well your kidneys are working.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/electrolyte-panel/,false,false
+Sodium,Serum sodium,lab_test,"Measures sodium, a salt your body needs to balance fluids and help nerves and muscles work.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/sodium-blood-test/,false,false
+Potassium,Serum potassium,lab_test,"Measures potassium, a mineral that helps your heart, nerves and muscles work properly.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/potassium-blood-test/,false,false
+Urea,Blood urea nitrogen|BUN,lab_test,"Measures urea, a waste product your kidneys remove from the blood. It helps show how well your kidneys are working.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/bun-blood-urea-nitrogen/,false,false
+Creatinine,Serum creatinine,lab_test,"Measures creatinine, a waste product from your muscles that your kidneys filter out. It helps show how well your kidneys are working.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/creatinine-test/,false,false
+eGFR,Estimated glomerular filtration rate|GFR,lab_test,"An estimate of how well your kidneys filter waste from your blood, worked out from your creatinine result.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/glomerular-filtration-rate-gfr-test/,false,false
+Liver function tests,LFT|LFTs|Liver panel,lab_test,A group of blood tests that check how well your liver is working.,MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/liver-function-tests/,false,false
+ALT,Alanine aminotransferase|Alanine transaminase|SGPT,lab_test,"Measures ALT, an enzyme found mostly in the liver. High levels can be a sign of liver irritation or damage.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/alt-blood-test/,false,false
+AST,Aspartate aminotransferase|SGOT,lab_test,"Measures AST, an enzyme found in the liver and muscles. High levels can be a sign of liver or muscle damage.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/ast-test/,false,false
+ALP,Alkaline phosphatase,lab_test,"Measures ALP, an enzyme found mainly in the liver and bones.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/alkaline-phosphatase/,false,false
+GGT,Gamma-glutamyl transferase|Gamma GT,lab_test,"Measures GGT, an enzyme found mostly in the liver. It is often checked with other liver tests.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/gamma-glutamyl-transferase-ggt-test/,false,false
+Bilirubin,Total bilirubin|Serum bilirubin,lab_test,"Measures bilirubin, a yellow substance made when old red blood cells are broken down. The liver normally clears it.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/bilirubin-blood-test/,false,false
+Albumin,Serum albumin,lab_test,"Measures albumin, a protein made by the liver that helps keep fluid in your blood vessels.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/albumin-blood-test/,false,false
+Total cholesterol,Serum cholesterol,lab_test,"Measures the total amount of cholesterol, a fatty substance, in your blood.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/cholesterol-levels/,false,false
+LDL cholesterol,LDL|Low-density lipoprotein,lab_test,"Measures LDL, often called bad cholesterol, which can build up in the walls of blood vessels.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/cholesterol-levels/,false,false
+HDL cholesterol,HDL|High-density lipoprotein,lab_test,"Measures HDL, often called good cholesterol, which helps remove other cholesterol from the blood.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/cholesterol-levels/,false,false
+Triglycerides,Serum triglycerides,lab_test,"Measures triglycerides, a type of fat in your blood.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/triglycerides-test/,false,false
+Glucose,Blood glucose|Blood sugar|Fasting glucose,lab_test,Measures the amount of sugar (glucose) in your blood at the time of the test.,MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/blood-glucose-test/,false,false
+HbA1c,Haemoglobin A1c|Hemoglobin A1c|A1C|Glycated haemoglobin,lab_test,Shows your average blood sugar level over the past two to three months.,MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/hemoglobin-a1c-hba1c-test/,false,false
+TSH,Thyroid stimulating hormone|Thyrotropin,lab_test,"Measures TSH, a hormone that tells your thyroid gland how much thyroid hormone to make. It is used to check how well your thyroid is working.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/tsh-thyroid-stimulating-hormone-test/,false,false
+Free T4,FT4|Free thyroxine|Thyroxine,lab_test,"Measures thyroxine (T4), the main hormone made by your thyroid gland.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/thyroxine-t4-test/,false,false
+CRP,C-reactive protein,lab_test,"Measures CRP, a protein made by the liver. The level goes up when there is inflammation or infection in the body.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/c-reactive-protein-crp-test/,false,false
+ESR,Erythrocyte sedimentation rate|Sed rate,lab_test,Measures how quickly red blood cells settle in a tube. A faster rate can be a sign of inflammation.,MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/erythrocyte-sedimentation-rate-esr/,false,false
+Ferritin,Serum ferritin,lab_test,"Measures ferritin, a protein that stores iron. It shows how much iron your body has stored.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/ferritin-blood-test/,false,false
+Vitamin B12,B12|Cobalamin,lab_test,"Measures vitamin B12, which your body needs to make red blood cells and keep nerves healthy.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/vitamin-b-test/,false,false
+Folate,Folic acid|Serum folate,lab_test,"Measures folate, a B vitamin your body needs to make healthy red blood cells.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/folic-acid-test/,false,false
+Vitamin D,25-hydroxyvitamin D|25-OH vitamin D,lab_test,"Measures vitamin D, which helps keep your bones and muscles healthy.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/vitamin-d-test/,false,false
+INR,International normalised ratio|International normalized ratio|PT/INR|Prothrombin time,lab_test,"Measures how long your blood takes to clot. It is often used to check blood-thinning medicine such as warfarin.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/prothrombin-time-test-and-inr-ptinr/,false,false
+Calcium,Serum calcium,lab_test,"Measures calcium, a mineral needed for strong bones and for nerves, muscles and the heart to work.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/calcium-blood-test/,false,false
+Magnesium,Serum magnesium,lab_test,"Measures magnesium, a mineral that helps your muscles, nerves and heart work.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/magnesium-blood-test/,false,false
+Phosphate,Phosphorus|Serum phosphate,lab_test,"Measures phosphate, a mineral that works with calcium to build strong bones and teeth.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/phosphate-in-blood/,false,false
+Troponin,Troponin T|Troponin I|hs-troponin,lab_test,"Measures troponin, a protein released into the blood when the heart muscle is damaged.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/troponin-test/,false,false
+PSA,Prostate-specific antigen,lab_test,"Measures PSA, a protein made by the prostate gland.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/prostate-specific-antigen-psa-test/,false,false
+Uric acid,Urate|Serum urate,lab_test,"Measures uric acid, a waste product in the blood. High levels can lead to gout.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/uric-acid-test/,false,false
+Creatine kinase,CK|CPK,lab_test,"Measures creatine kinase, an enzyme released into the blood when muscles are damaged.",MedlinePlus Lab Tests,https://medlineplus.gov/lab-tests/creatine-kinase/,false,false
+DTaP,DPT|DTP|Diphtheria tetanus and pertussis vaccine,vaccine,"A vaccine that protects against three infections: diphtheria, tetanus and whooping cough (pertussis).",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+Tdap,Tdap/IPV,vaccine,"A booster vaccine for older children and adults that protects against tetanus, diphtheria and whooping cough.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+Td,Td/IPV|Tetanus booster|Tetanus-diphtheria vaccine,vaccine,A booster vaccine that protects against tetanus and diphtheria.,HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+6 in 1 vaccine,6-in-1|Hexavalent vaccine,vaccine,"A combined baby vaccine that protects against six infections: diphtheria, tetanus, whooping cough, polio, Hib and hepatitis B.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+MMR,Measles mumps and rubella vaccine,vaccine,"A vaccine that protects against measles, mumps and rubella (German measles).",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+Hib,Haemophilus influenzae type b vaccine,vaccine,"A vaccine that protects against Hib bacteria, which can cause meningitis and other serious infections in young children.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+IPV,Polio vaccine|Inactivated polio vaccine,vaccine,A vaccine that protects against polio.,HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+Hepatitis B vaccine,Hep B vaccine|HepB,vaccine,"A vaccine that protects against hepatitis B, a virus that infects the liver.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+HPV vaccine,Human papillomavirus vaccine,vaccine,"A vaccine that protects against HPV, a virus that can cause some cancers and genital warts.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+MenB,Meningococcal B vaccine,vaccine,"A vaccine that protects against meningococcal B bacteria, a cause of meningitis and blood poisoning (sepsis).",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+MenC,Meningococcal C vaccine,vaccine,"A vaccine that protects against meningococcal C bacteria, a cause of meningitis and sepsis.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+MenACWY,Meningococcal ACWY vaccine,vaccine,"A vaccine that protects against four types of meningococcal bacteria (A, C, W and Y), a cause of meningitis and sepsis.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+PCV,Pneumococcal conjugate vaccine,vaccine,"A vaccine that protects against pneumococcal bacteria, a cause of pneumonia, meningitis and ear infections.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+PPV23,Pneumococcal polysaccharide vaccine,vaccine,A vaccine for older adults and people at higher risk that protects against 23 types of pneumococcal bacteria.,HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+Rotavirus vaccine,Rotavirus oral vaccine,vaccine,"A vaccine given by mouth to babies that protects against rotavirus, a common cause of severe diarrhoea and vomiting.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+BCG,BCG vaccine|Tuberculosis vaccine,vaccine,"A vaccine that protects against tuberculosis (TB), a bacterial infection that mainly affects the lungs.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+Influenza vaccine,Flu vaccine|Flu jab,vaccine,A yearly vaccine that protects against the flu virus.,HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+Varicella vaccine,Chickenpox vaccine,vaccine,A vaccine that protects against chickenpox.,HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+Shingles vaccine,Herpes zoster vaccine|Zoster vaccine,vaccine,"A vaccine for older adults that protects against shingles, a painful rash caused by the chickenpox virus waking up again.",HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
+COVID-19 vaccine,Covid vaccine|Covid booster,vaccine,A vaccine that protects against serious illness from COVID-19.,HSE National Immunisation Office,https://www.hse.ie/eng/health/immunisation/,false,false
