@@ -7,4 +7,6 @@ runs on the local machine and only ever sees REDACTED text.
 
 Modules:
     build_kb   Parse the MedlinePlus health-topics XML into a local JSONL knowledge base.
+    kb         Load the knowledge base (MedlinePlus + curated glossary) and index its names.
+    terms      Find knowledge-base terms in redacted text (exact, alias and fuzzy matching).
 """

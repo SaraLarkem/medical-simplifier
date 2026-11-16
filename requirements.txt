@@ -13,8 +13,7 @@ spacy
 numpy
 opencv-python-headless
 
-# Evaluation
-# Optional: faster Levenshtein for CER/WER (pure-Python fallback is used if missing)
+# RAG term extraction (fuzzy matching of OCR-damaged terms); also speeds up CER/WER
 rapidfuzz
 
 # Analysis notebook

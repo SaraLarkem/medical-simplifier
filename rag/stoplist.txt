@@ -1,0 +1,158 @@
+# Names that never count as a term match.
+#
+# This removes a NAME, not a topic: "Blood Pressure" is listed, but the topic it belongs to
+# (High Blood Pressure) can still be found through "Hypertension", "HTN", etc.
+#
+# How this list was made: by reviewing every one- and two-word title/alias in the knowledge
+# base and the case-sensitive abbreviations, and removing names that fall into one of the
+# groups below. It was NOT built from false matches on the synthetic evaluation documents,
+# so the evaluation is not tuned to them. Names are compared after rag.kb.normalise(), so
+# case and UK/US spelling do not matter here.
+
+# --- Everyday words: plain English, not jargon a reader needs explained ---
+abnormalities
+abuse
+accidents
+aging
+anatomy
+bleeding
+blood
+delivery
+drinking
+driving
+falls
+fitness
+insurance
+labor
+medications
+medicines
+drugs
+memory
+noise
+nutrition
+operation
+pain
+period
+posture
+prevention
+privacy
+pulse
+safety
+salt
+shock
+shots
+smoking
+statistics
+stress
+sugar
+surgery
+sweat
+swelling
+tears
+teeth
+temperature
+water
+careers
+hospitals
+pets
+glasses
+eyeglasses
+eyewear
+makeup
+cosmetics
+walkers
+canes
+braces
+cutting
+dieting
+diets
+vitamins
+minerals
+proteins
+carbohydrates
+carbs
+fiber
+imaging
+rehab
+rehabilitation
+veins
+joint
+stool
+pee
+poop
+sex
+
+# --- Street/slang names for drugs that are also ordinary words ---
+blow
+bud
+chalk
+coke
+crack
+crystal
+dip
+dope
+flake
+glass
+grass
+hash
+horse
+ice
+junk
+pot
+reefer
+smack
+snow
+speed
+weed
+mary jane
+black tar
+hell dust
+soda cot
+tina
+chiva
+big h
+
+# --- Informal short forms that are ambiguous on their own ---
+endo
+crypto
+trich
+the runs
+the trots
+
+# --- Generic phrases: describe a measurement, section or activity, not a condition ---
+blood pressure
+heart rate
+breathing rate
+vital signs
+body weight
+family history
+side effects
+first aid
+after surgery
+blood tests
+laboratory tests
+screening tests
+second opinion
+stay positive
+staying healthy
+healthy living
+patient records
+patient rights
+drinking water
+cell phones
+car seats
+cold temperature
+hot temperature
+lymph nodes
+
+# --- Case-sensitive abbreviations that collide with ordinary uppercase text ---
+# H: the High flag in lab results.  PPS: the Irish PPS number label.
+# ED: Emergency Department.  MD: the doctor's title.  ALL/ADD/ART/SAD: ordinary words.
+h
+pps
+ed
+md
+all
+add
+art
+sad
