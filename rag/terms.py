@@ -8,8 +8,9 @@ Matching, in order of preference:
   1. exact / alias   longest phrase first, so "Iron deficiency anaemia" beats "anaemia".
                      Abbreviation-like names (OD, TSH, CRP) are matched case-sensitively;
                      everything else after rag.kb.normalise() (case, UK/US spelling, accents).
-  2. fuzzy           only for single words nothing else matched, to recover OCR damage
-                     ("Haemog1obin"). First a cheap digit->letter repair, then rapidfuzz.
+  2. fuzzy           only for single words nothing else matched, to recover OCR damage:
+                     a cheap digit->letter repair ("Haemog1obin"), then words OCR glued
+                     together ("HepatitisB" -> Hepatitis B), then rapidfuzz.
 
 Redaction placeholders such as <PERSON> are never matched and no phrase spans across one.
 """
@@ -101,20 +102,24 @@ def _fuzzy_buckets(kb):
 
 
 def _fuzzy(kb, word, threshold, min_len):
-    """Match one OCR-damaged word. Returns (name, score) or None."""
+    """Match one OCR-damaged word. Returns (index hits, score) or None."""
     if len(word) < min_len or not any(c.isalpha() for c in word):
         return None
     norm = normalise(word)
     repaired = normalise(word.translate(OCR_REPAIR))
     if repaired != norm and repaired in kb.ci_index:
-        return repaired, fuzz.ratio(norm, repaired)
+        return kb.ci_index[repaired], fuzz.ratio(norm, repaired)
+    # OCR often drops the space between words ("HepatitisB", "LymphNodes"):
+    # compare against names with their spaces removed before trying fuzzy matching.
+    if repaired in kb.compact_index:
+        return kb.compact_index[repaired], 100.0
     if not repaired.isalpha():
         return None
     buckets = _fuzzy_buckets(kb)
     candidates = [n for size in range(len(repaired) - FUZZY_LEN_TOLERANCE, len(repaired) + FUZZY_LEN_TOLERANCE + 1)
                   for n in buckets.get(size, [])]
     best = process.extractOne(repaired, candidates, scorer=fuzz.ratio, score_cutoff=threshold)
-    return (best[0], best[1]) if best else None
+    return (kb.ci_index[best[0]], best[1]) if best else None
 
 
 def extract_terms(text, kb, fuzzy=True, fuzzy_threshold=DEFAULT_FUZZY_THRESHOLD,
@@ -137,7 +142,7 @@ def extract_terms(text, kb, fuzzy=True, fuzzy_threshold=DEFAULT_FUZZY_THRESHOLD,
                 start, end, word = run[i]
                 match = _fuzzy(kb, word, fuzzy_threshold, fuzzy_min_len) if fuzzy else None
                 if match:
-                    ids, _ = _rank(kb, kb.ci_index[match[0]])
+                    ids, _ = _rank(kb, match[0])
                     found.append(Term(word, (start, end), "fuzzy", ids, float(match[1])))
                 i += 1
     return found
