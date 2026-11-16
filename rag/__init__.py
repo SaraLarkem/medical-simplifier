@@ -9,4 +9,7 @@ Modules:
     build_kb   Parse the MedlinePlus health-topics XML into a local JSONL knowledge base.
     kb         Load the knowledge base (MedlinePlus + curated glossary) and index its names.
     terms      Find knowledge-base terms in redacted text (exact, alias and fuzzy matching).
+    retriever  Turn found terms into ranked, shortened, sourced definitions (passages).
+    prompt     Build the LLM request with [S#] definitions, the Sources section, and
+               check the answer's citations.
 """
