@@ -7,7 +7,7 @@
 
 ## 1. Purpose and scope
 
-A privacy-first tool that turns hard-to-read medical documents (reports, leaflets, forms) into plain language at roughly an 8th-grade reading level, while preserving the original medical meaning.
+A privacy-first tool that turns hard-to-read medical documents (reports, leaflets, forms) into plain English that a 12–14 year old could follow, while preserving the original medical meaning.
 
 **In scope:** explaining what a document says, defining terms, suggesting questions to ask a clinician.
 **Out of scope (by design):** diagnosis, treatment advice, suggesting alternative medication. The tool says "your report says X, here is what that term means", never "you have X, so do Y".
@@ -75,7 +75,7 @@ Regulatory framing: GDPR first (Art. 5(1)(c) data minimisation, Art. 9 special-c
 | Test data | 30-50 **synthetic** documents (lab report, discharge note, leaflet, form) with known fake PII. No real patient data. |
 | OCR | CER / WER across pre-processing ablations |
 | Redaction | Per-entity P/R/F1; leakage rate end to end |
-| Readability | Flesch-Kincaid / SMOG, original vs simplified |
+| Readability | Flesch Reading Ease (target 60+) / SMOG, original vs simplified |
 | Faithfulness | Automated entity/number preservation + manual rubric on a subset |
 | Benchmark | SARI / BERTScore on a GEM Cochrane subset (sanity check only) |
 | Privacy proof | Traffic capture showing no PII in outgoing payloads |

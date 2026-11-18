@@ -1,6 +1,6 @@
 # Medical Information Simplifier
 
-A privacy-first tool that turns hard-to-read medical documents into plain language at roughly an 8th-grade reading level. Personal data is removed **on your machine** before any text is sent to a language model.
+A privacy-first tool that turns hard-to-read medical documents into plain English that a 12–14 year old could follow. Personal data is removed **on your machine** before any text is sent to a language model.
 
 > **Not medical advice.** The tool explains what a document says and defines its terms. It does not diagnose, recommend treatment or suggest alternative medication.
 
