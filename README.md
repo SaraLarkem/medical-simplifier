@@ -11,11 +11,14 @@ Final-year Software Engineering project by Sara Larkem. Status: **MVP**. The ful
 ```
 Document image
   -> [1] Pre-process + OCR        (Tesseract, local)
-  -> [2] PII redaction            (Microsoft Presidio + custom Irish recognizers, local)
-  -> [3] Plain-language rewrite   (LLM via the Groq API; only redacted text is sent)
+  -> [2] PII redaction            (Microsoft Presidio + custom Irish recognisers, local)
+  -> [3] Term lookup              (term extraction + retrieval from MedlinePlus and a curated glossary, local, on redacted text)
+  -> [4] Plain-language rewrite   (LLM via the Groq API; only redacted text and the retrieved definitions are sent)
 ```
 
-Stages 1 and 2 run locally. Only stage 3 crosses the network, and it only receives text that has already been redacted. As well as Presidio's built-in entities (names, dates, phone numbers, locations), the redaction step has custom recognizers for **PPS numbers** and **Eircodes**.
+Stages 1–3 run locally. Only stage 4 crosses the network, and it only receives text that has already been redacted, plus the definitions found in stage 3. As well as Presidio's built-in entities (names, dates, phone numbers, locations), the redaction step has custom recognisers for **PPS numbers** and **Eircodes**.
+
+Stage 3 finds the medical terms in the redacted text and looks up trusted definitions for them. The model is asked to cite each definition it uses as `[S1]`, `[S2]`, ...; the pipeline then lists the sources and reports any citations that are invalid or missing. If the knowledge base has not been built, the pipeline prints a warning and carries on without definitions.
 
 ## Repository layout
 
@@ -24,9 +27,11 @@ Stages 1 and 2 run locally. Only stage 3 crosses the network, and it only receiv
 | [mvp_pipeline.py](mvp_pipeline.py) | The end-to-end pipeline: OCR -> redaction -> LLM explanation |
 | [generate_synthetic.py](generate_synthetic.py) | Generates synthetic medical documents (images + ground truth) for evaluation |
 | [evaluate_pipeline.py](evaluate_pipeline.py) | Measures OCR accuracy and redaction quality against the synthetic ground truth |
-| [evaluation_analysis-v2.ipynb](evaluation_analysis-v2.ipynb) | Charts the privacy-vs-utility trade-off from the evaluation results |
+| [evaluation_analysis.ipynb](evaluation_analysis.ipynb) | Charts the privacy-vs-utility trade-off from the evaluation results |
+| [rag/](rag/) | Local term extraction (`terms.py`), retrieval (`retriever.py`), prompt building (`prompt.py`), knowledge-base loading (`kb.py`) and the knowledge-base builder (`build_kb.py`) |
+| [data/kb/curated_glossary.csv](data/kb/curated_glossary.csv) | Hand-written definitions, with sources, for abbreviations and terms MedlinePlus does not cover (e.g. OD, BD). The only tracked file under `data/` |
 | [check_models.py](check_models.py) | Lists the models available to your Groq API key |
-| [tests/](tests/) | Unit tests for the evaluation harness |
+| [tests/](tests/) | Unit tests for the evaluation harness and the RAG module |
 | [ARCH_SPEC.md](ARCH_SPEC.md) | Architecture specification, threat model and evaluation plan |
 
 ## Setup
@@ -49,6 +54,14 @@ Stages 1 and 2 run locally. Only stage 3 crosses the network, and it only receiv
    ```
 
    `.env` is git-ignored, so never put the key in a source file.
+
+4. Build the local knowledge base. Download "MedlinePlus Health Topic XML" from <https://medlineplus.gov/xml.html> into `data/kb/raw/`, then run:
+
+   ```
+   python -m rag.build_kb
+   ```
+
+   This writes `data/kb/medlineplus.jsonl` from the newest `mplus_topics_YYYY-MM-DD.xml` in that folder. The built knowledge base is git-ignored; the curated glossary is already in the repository.
 
 ## Usage
 
@@ -79,7 +92,7 @@ python evaluate_pipeline.py redact --data data/synthetic --detectors mvp regex_i
 python evaluate_pipeline.py redact --source ocr --ocr-config deskew_bgnorm --variant phone
 ```
 
-OCR output is cached in `results/ocr_cache/`, so re-runs are fast. Then open `evaluation_analysis-v2.ipynb` to chart the results from `results/redaction_gt.csv`.
+OCR output is cached in `results/ocr_cache/`, so re-runs are fast. Then open `evaluation_analysis.ipynb` to chart the results from `results/redaction_gt.csv`.
 
 To evaluate your own redactor, write a function `detect(text) -> [(start, end, entity_type), ...]` and pass it as `--detectors my_module:detect`.
 
@@ -98,7 +111,7 @@ To evaluate your own redactor, write a function `detect(text) -> [(start, end, e
 
 Presidio's `DATE_TIME` entity is the main cause of utility loss, because it also removes durations such as "7 days".
 
-The `mvp` row is the original MVP configuration. `mvp_pipeline.py` has since added PPS, Eircode and LOCATION recognizers, so its current configuration has not been evaluated exactly.
+The `mvp` row is the original MVP configuration. `mvp_pipeline.py` has since added PPS, Eircode and LOCATION recognisers, so its current configuration has not been evaluated exactly.
 
 **OCR** (Tesseract `--psm 3`): on degraded phone photos, background normalisation + Otsu thresholding cuts the character error rate from **41.4%** (2x upscale only) to **4.6%**. On clean and scanned images every config stays below 5% CER.
 
@@ -108,7 +121,7 @@ The `mvp` row is the original MVP configuration. `mvp_pipeline.py` has since add
 pytest
 ```
 
-The tests cover the text metrics (CER/WER, Levenshtein), redaction scoring, the regex baseline against generated documents, skew estimation and the pre-processing configs. pytest only collects `tests/`, as configured in `pytest.ini`.
+The tests cover the text metrics (CER/WER, Levenshtein), redaction scoring, the regex baseline against generated documents, skew estimation and the pre-processing configs, as well as RAG term extraction, retrieval, prompt building and knowledge-base parsing (`tests/test_rag.py`). pytest only collects `tests/`, as configured in `pytest.ini`.
 
 ## Privacy notes
 
