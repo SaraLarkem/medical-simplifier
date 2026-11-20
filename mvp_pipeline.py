@@ -1,11 +1,12 @@
 """
 Project: Medical Information Simplifier (Final-Year Software Engineering Project)
-Module: MVP Pipeline (OCR -> Local PII Redaction -> Local Retrieval -> Secure API Inference)
+Module: MVP Pipeline (OCR -> Local PII Redaction -> Local Retrieval -> Cloud API Inference)
 Author: Sara Larkem
 Description: Implements a privacy-first data pipeline that extracts text from complex
-             medical documents, sanitizes PII locally via Microsoft Presidio, looks up
+             medical documents, sanitises PII locally via Microsoft Presidio, looks up
              trusted definitions for the medical terms in a local knowledge base, and
-             queries an open-weight LLM via a secure, zero-retention API endpoint.
+             queries an open-weight LLM via a cloud API endpoint over HTTPS
+             (retention depends on the provider's data policy).
 
 Usage:
     python mvp_pipeline.py
@@ -172,7 +173,7 @@ def main():
     print("--- ORIGINAL EXTRACTED TEXT ---")
     print(extracted_text)
 
-    print("\n--- EXECUTING LOCAL PII REDACTION (DATA MINIMIZATION) ---")
+    print("\n--- EXECUTING LOCAL PII REDACTION (DATA MINIMISATION) ---")
     safe_text = redact(extracted_text, build_analyzer(), AnonymizerEngine())
     print(safe_text)
 
@@ -183,7 +184,7 @@ def main():
         passages = find_definitions(safe_text, kb)
         print_passages(passages)
 
-    print("\nExecuting secure API request (TLS 1.3 / Zero-Retention RAM)...")
+    print("\nSending redacted text to the LLM provider over HTTPS...")
     try:
         simplified_text = simplify(safe_text, api_key, passages)
     except RuntimeError as err:
