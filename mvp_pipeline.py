@@ -1,9 +1,10 @@
 """
 Project: Medical Information Simplifier (Final-Year Software Engineering Project)
-Module: MVP Pipeline (OCR -> Local PII Redaction -> Secure API Inference)
+Module: MVP Pipeline (OCR -> Local PII Redaction -> Local Retrieval -> Secure API Inference)
 Author: Sara Larkem
 Description: Implements a privacy-first data pipeline that extracts text from complex
-             medical documents, sanitizes PII locally via Microsoft Presidio, and
+             medical documents, sanitizes PII locally via Microsoft Presidio, looks up
+             trusted definitions for the medical terms in a local knowledge base, and
              queries an open-weight LLM via a secure, zero-retention API endpoint.
 
 Usage:
@@ -12,6 +13,7 @@ Usage:
 
 import os
 import sys
+import time
 
 import pytesseract
 import requests
@@ -21,12 +23,21 @@ from presidio_analyzer import AnalyzerEngine, Pattern, PatternRecognizer
 from presidio_anonymizer import AnonymizerEngine
 
 from evaluate_pipeline import configure_tesseract
+from rag.kb import load_kb
+from rag.prompt import build_messages, check_citations, format_sources
+from rag.retriever import retrieve
+from rag.terms import extract_terms
 
 # --- SYSTEM CONFIGURATION ---
 IMAGE_PATH = "sample_report.png"
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "qwen/qwen3.8-27b"
 REQUEST_TIMEOUT = 60  # seconds
+
+# Ground "Medical terms" definitions in a local knowledge base (MedlinePlus + curated
+# glossary). Build it once with:  python -m rag.build_kb
+USE_RAG = True
+RAG_MAX_PASSAGES = 10
 
 # Entities redacted locally before any text leaves the device
 REDACT_ENTITIES = ["PERSON", "DATE_TIME", "PHONE_NUMBER", "PPS_NUMBER", "EIRCODE", "LOCATION"]
@@ -87,24 +98,63 @@ def redact(text, analyzer, anonymizer):
     return anonymizer.anonymize(text=text, analyzer_results=analysis_results).text
 
 
+# --- STEP 2b/2c: LOCAL TERM EXTRACTION & RETRIEVAL ---
+def load_knowledge_base():
+    """Load the local KB, or return None (pipeline then runs without RAG)."""
+    kb = load_kb()
+    if len(kb) == 0:
+        print("Warning: knowledge base not found; continuing WITHOUT trusted definitions. "
+              "Build it with:  python -m rag.build_kb")
+        return None
+    return kb
+
+
+def find_definitions(safe_text, kb):
+    """Find medical terms and their trusted definitions.
+
+    Runs entirely on this machine and only ever receives the REDACTED text.
+    """
+    terms = extract_terms(safe_text, kb)
+    return retrieve(terms, kb, max_items=RAG_MAX_PASSAGES, text=safe_text)
+
+
+def print_passages(passages):
+    if not passages:
+        print("No terms from the knowledge base were found in this text.")
+    for i, p in enumerate(passages, 1):
+        flags = (" [AMBIGUOUS]" if p.ambiguous else "") + ("" if p.verified else " [unverified]")
+        print(f"[S{i}] {p.term} -> {p.title} ({p.origin}, {p.match_type}){flags}")
+        print(f"     {p.text}")
+        print(f"     {p.source} | {p.url}")
+
+
 # --- STEP 3: SECURE CLOUD TRANSMISSION & INFERENCE ---
-def simplify(safe_text, api_key):
-    """Send redacted text to the LLM and return the plain-language explanation."""
+def call_llm(messages, api_key):
+    """Send one chat request. Returns the answer, Groq's token usage and the latency.
+
+    Raises RuntimeError on an API error, so batch evaluation can carry on.
+    """
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
     }
-    payload = {
-        "model": MODEL,
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": f"Simplify this medical text: {safe_text}"},
-        ],
-    }
+    payload = {"model": MODEL, "messages": messages}
+    start = time.perf_counter()
     response = requests.post(API_URL, json=payload, headers=headers, timeout=REQUEST_TIMEOUT)
+    seconds = time.perf_counter() - start
     if response.status_code != 200:
-        sys.exit(f"API Error [{response.status_code}]: {response.text}")
-    return response.json()["choices"][0]["message"]["content"]
+        raise RuntimeError(f"API Error [{response.status_code}]: {response.text}")
+    body = response.json()
+    return {
+        "content": body["choices"][0]["message"]["content"],
+        "usage": body.get("usage", {}),
+        "seconds": round(seconds, 2),
+    }
+
+
+def simplify(safe_text, api_key, passages=None):
+    """Send redacted text (plus any trusted definitions) to the LLM; return the explanation."""
+    return call_llm(build_messages(SYSTEM_PROMPT, safe_text, passages or []), api_key)["content"]
 
 
 def main():
@@ -126,10 +176,27 @@ def main():
     safe_text = redact(extracted_text, build_analyzer(), AnonymizerEngine())
     print(safe_text)
 
+    passages = []
+    kb = load_knowledge_base() if USE_RAG else None
+    if kb is not None:
+        print("\n--- LOCAL TERM EXTRACTION & RETRIEVAL (redacted text only, no network) ---")
+        passages = find_definitions(safe_text, kb)
+        print_passages(passages)
+
     print("\nExecuting secure API request (TLS 1.3 / Zero-Retention RAM)...")
-    simplified_text = simplify(safe_text, api_key)
+    try:
+        simplified_text = simplify(safe_text, api_key, passages)
+    except RuntimeError as err:
+        sys.exit(str(err))
     print("\n--- PLAIN LANGUAGE EXPLANATION ---")
     print(simplified_text)
+
+    if passages:
+        print("\n" + format_sources(passages))
+        c = check_citations(simplified_text, len(passages))
+        fmt = lambda nums: ", ".join(f"[S{n}]" for n in nums) or "none"
+        print(f"\nCitations: {len(c['cited'])}/{len(passages)} sources cited, "
+              f"invalid: {fmt(c['invalid'])}, not cited: {fmt(c['uncited'])}")
 
 
 if __name__ == "__main__":
